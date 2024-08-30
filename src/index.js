@@ -1,5 +1,7 @@
+const envFile = process.env.NODE_ENV === 'prod' ? '.env.prod' : '.env.dev';
+require("dotenv").config({ path: envFile });
+
 const cors = require('cors');
-require("dotenv").config();
 const express = require('express');
 const rotas = require('./routers/rotas');
 const app = express();
