@@ -3,7 +3,7 @@ const validarCampos = async (req, res, next) => {
   try {
     const { nome, idade, telefone, email, data_nascimento, cpf, rua, numero, bairro, genero, tipo_sanguineo } = req.body
     if (!nome || !idade || !telefone || !email || !data_nascimento || !cpf || !rua || !numero || !bairro || !genero || !tipo_sanguineo) {
-      console.log(nome, idade, telefone, email, data_nascimento, cpf, rua, numero, bairro, genero, tipo_sanguineo )
+      console.log(nome, idade, telefone, email, data_nascimento, cpf, rua, numero, bairro, genero, tipo_sanguineo)
       return res.status(400).json("Dados do paciente estão faltando");
     }
     next();
@@ -48,25 +48,36 @@ const emailValido = async (req, res, next) => {
     return res.status(500).json("Erro interno");
   }
 }
-const validarCpf = async(req, res, next) =>{
+const validarTamanhoCpf = async (req, res, next) => {
   try {
-    const {cpf} = req.body
-  if(cpf.length > 11){
-    return res.status(400).json("CPF inválido")
-  }
-  const cpfValido = await knex("pacientes").where("cpf", cpf);
-  if (cpfValido.length > 0){
-    return res.status(400).json("CPF já cadastrado");
-  }
-  next();
+    const { cpf } = req.body
+    if (cpf.length > 11) {
+      return res.status(400).json("CPF inválido")
+    }
+    next();
   } catch (error) {
     return res.status(500).json("Erro interno");
   }
 }
+const validarCpfJaCadastrado = async (req, res, next) => {
+  try {
+    const { cpf } = req.body
+    const cpfValido = await knex("pacientes").where("cpf", cpf);
+    if (cpfValido.length > 0) {
+      return res.status(400).json("CPF já cadastrado");
+    }
+    next();
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json("Erro interno");
+  }
+}
+
 module.exports = {
   validarCampos,
   listaVazia,
   idValido,
   emailValido,
-  validarCpf
+  validarTamanhoCpf,
+  validarCpfJaCadastrado
 }
