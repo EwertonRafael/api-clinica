@@ -5,8 +5,11 @@ const knex = require("knex")({
     user: process.env.DBUSER,
     password: process.env.DBPASS,
     database: process.env.DBDATABASE,
-    ssl:{ rejectUnauthorized: false }
+    ssl: true
   }
 });
+if (process.env.NODE_ENV === 'prod') {
+  knex.client.config.connection.ssl = { rejectUnauthorized: true };
+}
 
 module.exports = knex;
