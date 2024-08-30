@@ -1,18 +1,21 @@
-const express = require('express');
 const envFile = process.env.NODE_ENV === 'prod' ? '.env.prod' : '.env.dev';
 require("dotenv").config({ path: envFile });
-const cors = require('cors');
 
+const express = require('express');
 const swaggerUi = require("swagger-ui-express")
 const swaggerDocs = require('./swagger.json');
 const app = express();
+app.use(express.json());
+const cors = require('cors');
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 const rotas = require('./routers/rotas');
 
-app.use(express.json());
 app.use(rotas);
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+}));
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`rodando na ulr: http://localhost:${port}`);

@@ -5,7 +5,7 @@ const knex = require("knex")({
     user: process.env.DBUSER,
     password: process.env.DBPASS,
     database: process.env.DBDATABASE,
-    ssl: {rejectUnauthorized: true}
+    ssl: {rejectUnauthorized: false}
   }
 });
 
