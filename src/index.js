@@ -1,6 +1,8 @@
 const envFile = process.env.NODE_ENV === 'prod' ? '.env.prod' : '.env.dev';
 require("dotenv").config({ path: envFile });
 
+const swaggerUi = require("swagger-ui")
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerUi));
 const cors = require('cors');
 const express = require('express');
 const rotas = require('./routers/rotas');
