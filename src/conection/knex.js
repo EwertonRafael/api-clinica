@@ -8,8 +8,5 @@ const knex = require("knex")({
     ssl: {rejectUnauthorized: true}
   }
 });
-if (process.env.NODE_ENV === 'prod') {
-  knex.client.config.connection.ssl = { rejectUnauthorized: true };
-}
 
 module.exports = knex;
