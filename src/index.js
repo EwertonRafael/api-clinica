@@ -16,10 +16,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 const rotas = require('./routers/rotas');
 
 app.use(rotas);
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
-}));
+app.use(cors());
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`rodando na ulr: http://localhost:${port}`);
