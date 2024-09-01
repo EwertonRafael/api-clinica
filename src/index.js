@@ -1,5 +1,5 @@
 
-const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.dev';
+const envFile = process.env.NODE_ENV === 'production' ? '.env.dev' : '.env.production';
 console.log(process.env.NODE_ENV);
 console.log(envFile);
 
