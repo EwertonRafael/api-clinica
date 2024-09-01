@@ -16,7 +16,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 const rotas = require('./routers/rotas');
 
 app.use(rotas);
-app.use(cors());
+app.use(cors({ origin: 'https://api-clinica-26if.onrender.com' }));
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`rodando na ulr: http://localhost:${port}`);
