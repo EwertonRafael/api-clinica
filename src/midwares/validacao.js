@@ -9,7 +9,7 @@ const validarCampos = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error)
-    return res.status(500).json("Erro interno");
+    return res.status(500).json("Erro interno 1");
   }
 }
 const listaVazia = async (req, res, next) => {
@@ -20,7 +20,7 @@ const listaVazia = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    return res.status(500).json("Erro interno");
+    return res.status(500).json("Erro interno 2");
   }
 }
 const idValido = async (req, res, next) => {
@@ -35,7 +35,7 @@ const idValido = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    return res.status(500).json("Erro interno");
+    return res.status(500).json("Erro interno 3");
   }
 }
 const emailValido = async (req, res, next) => {
@@ -46,7 +46,7 @@ const emailValido = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    return res.status(500).json("Erro interno");
+    return res.status(500).json("Erro interno 4");
   }
 }
 const validarTamanhoCpf = async (req, res, next) => {
@@ -57,7 +57,7 @@ const validarTamanhoCpf = async (req, res, next) => {
     }
     next();
   } catch (error) {
-    return res.status(500).json("Erro interno");
+    return res.status(500).json("Erro interno 5");
   }
 }
 const validarCpfJaCadastrado = async (req, res, next) => {
@@ -70,7 +70,7 @@ const validarCpfJaCadastrado = async (req, res, next) => {
     next();
   } catch (error) {
     console.log(error.message);
-    return res.status(500).json("Erro interno");
+    return res.status(500).json("Erro interno 6");
   }
 }
 
