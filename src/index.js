@@ -1,4 +1,6 @@
-const envFile = process.env.NODE_ENV === 'dev' ? '.env.prod' : '.env.dev';
+
+const envFile = process.env.NODE_ENV === 'prod' ? '.env.prod' : '.env.dev';
+console.log(process.env.NODE_ENV);
 console.log(envFile);
 
 require("dotenv").config({ path: envFile });
